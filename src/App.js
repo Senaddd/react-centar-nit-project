@@ -6,21 +6,14 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import DataFetching from "./DataFetching";
 
-function App() {
-  const [pagination, setPagination] = useState({});
-  const [page, setPage] = useState(1);
-
-
+function App(props) {
   
 
   return (
     <ChakraProvider>
       <Tabs align="center" variant="soft-rounded" colorScheme="purple">
         <TabList>
-          <Tab>
-            Iphone
-            <DataFetching />
-          </Tab>
+          <Tab>Bitcoin</Tab>
           <Tab>Samsung</Tab>
           <Tab>Tesla</Tab>
           <Tab>New York</Tab>
@@ -28,7 +21,7 @@ function App() {
 
         <TabPanels>
           <TabPanel>
-            <p>one!</p>
+            <DataFetching />
           </TabPanel>
           <TabPanel>
             <p>two!</p>
@@ -41,6 +34,7 @@ function App() {
           </TabPanel>
         </TabPanels>
       </Tabs>
+      <DataFetching />
     </ChakraProvider>
   );
 }
