@@ -3,20 +3,24 @@ import "./App.css";
 import * as React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import DataFetching from "./DataFetching";
 
-const BASE_URL =
-  "https://newsapi.org/v2/everything?q=Apple&from=2022-09-07&sortBy=popularity&apiKey=984004e456fc482e8198ad93914cd6c9";
-
-function App(page) {
+function App() {
   const [pagination, setPagination] = useState({});
   const [page, setPage] = useState(1);
+
+
+  
 
   return (
     <ChakraProvider>
       <Tabs align="center" variant="soft-rounded" colorScheme="purple">
         <TabList>
-          <Tab>Iphone</Tab>
+          <Tab>
+            Iphone
+            <DataFetching />
+          </Tab>
           <Tab>Samsung</Tab>
           <Tab>Tesla</Tab>
           <Tab>New York</Tab>
