@@ -31,14 +31,16 @@ function App(props) {
       >
         <TabList>
           <Tab>Samsung</Tab>
-          <Tab>Apple</Tab>
+          <Tab>Iphone</Tab>
           <Tab>Bitcoin</Tab>
+          <Tab>Tesla</Tab>
+          <Tab></Tab>
         </TabList>
         <Box align="center">
           <input
             type="range"
             min="0"
-            max="2"
+            max="3"
             value={tabIndex}
             onChange={handleSliderChange}
           />{" "}
@@ -61,6 +63,10 @@ function App(props) {
             <p>
               <BitcoinData />
             </p>
+          </TabPanel>
+          <TabPanel>
+            <h1 className="headers">News about Tesla </h1>
+            <TeslaData />
           </TabPanel>
         </TabPanels>
       </Tabs>
