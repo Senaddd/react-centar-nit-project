@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const DataFetching = () => {
+const BitcoinData = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
@@ -34,4 +34,4 @@ const DataFetching = () => {
   );
 };
 
-export default DataFetching;
+export default BitcoinData;

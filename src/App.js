@@ -2,39 +2,68 @@ import logo from "./logo.svg";
 import "./App.css";
 import * as React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Box } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
-import DataFetching from "./DataFetching";
+import BitcoinData from "./Datas/BitcoinData";
+import SamsungData from "./Datas/SamsungData";
+import TeslaData from "./Datas/TeslaData";
+import IphoneData from "./Datas/IphoneData";
 
 function App(props) {
-  
+  const [tabIndex, setTabIndex] = React.useState(0);
+
+  const handleSliderChange = (event) => {
+    setTabIndex(parseInt(event.target.value, 10));
+  };
+
+  const handleTabsChange = (index) => {
+    setTabIndex(index);
+  };
 
   return (
     <ChakraProvider>
-      <Tabs align="center" variant="soft-rounded" colorScheme="purple">
+      <Tabs
+        index={tabIndex}
+        onChange={handleTabsChange}
+        variant="soft-rounded"
+        colorScheme="purple"
+        align="center"
+      >
         <TabList>
-          <Tab>Bitcoin</Tab>
           <Tab>Samsung</Tab>
-          <Tab>Tesla</Tab>
-          <Tab>New York</Tab>
+          <Tab>Apple</Tab>
+          <Tab>Bitcoin</Tab>
         </TabList>
-
+        <Box align="center">
+          <input
+            type="range"
+            min="0"
+            max="2"
+            value={tabIndex}
+            onChange={handleSliderChange}
+          />{" "}
+        </Box>
         <TabPanels>
           <TabPanel>
-            <DataFetching />
+            <h1 className="headers">News about Samsung </h1>
+            <p>
+              <SamsungData />
+            </p>
           </TabPanel>
           <TabPanel>
-            <p>two!</p>
+            <h1 className="headers">News about Apple</h1>
+            <p>
+              <IphoneData />
+            </p>
           </TabPanel>
           <TabPanel>
-            <p>three!</p>
-          </TabPanel>
-          <TabPanel>
-            <p>New York</p>
+            <h1 className="headers">News about Bitcoin</h1>
+            <p>
+              <BitcoinData />
+            </p>
           </TabPanel>
         </TabPanels>
       </Tabs>
-      <DataFetching />
     </ChakraProvider>
   );
 }
